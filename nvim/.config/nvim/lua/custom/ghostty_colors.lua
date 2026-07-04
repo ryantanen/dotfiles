@@ -83,6 +83,32 @@ local function hi(group, fg, bg, style)
   })
 end
 
+local function adjust_hex(hex, amount)
+  hex = hex:gsub("#", "")
+
+  local r = tonumber(hex:sub(1, 2), 16)
+  local g = tonumber(hex:sub(3, 4), 16)
+  local b = tonumber(hex:sub(5, 6), 16)
+
+  local function clamp(x)
+    return math.max(0, math.min(255, x))
+  end
+
+  local function shift(c)
+    if amount > 0 then
+      return c + (255 - c) * amount
+    else
+      return c * (1 + amount)
+    end
+  end
+
+  r = clamp(shift(r))
+  g = clamp(shift(g))
+  b = clamp(shift(b))
+
+  return string.format("#%02x%02x%02x", r, g, b)
+end
+
 -- Apply highlights
 function theme.set()
   -- Reload the palette from config
@@ -110,7 +136,7 @@ function theme.set()
   -- Basic UI
   hi("Normal", c.fg, c.bg)
   hi("Cursor", c.cursor_txt, c.cursor)
-  hi("CursorLine", nil, "#2c313a") -- slightly lifted from bg
+  hi("CursorLine", nil, adjust_hex(c.br_black, -0.4)) -- slightly lifted from bg
   hi("CursorColumn", nil, c.br_black)
   hi("ColorColumn", nil, c.br_black)
   hi("LineNr", c.br_black) -- #666666, muted
