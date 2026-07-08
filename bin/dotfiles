@@ -61,7 +61,7 @@ brew update
 
 # Install homebrew packages
 echo "› brew upgrade"
-brew upgrade -y
+brew upgrade
 
 # Install software
 echo "› $ZSH/script/install"

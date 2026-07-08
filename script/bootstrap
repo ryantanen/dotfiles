@@ -27,6 +27,13 @@ fail () {
   exit
 }
 
+confirm () {
+  user "$1 [y/N]"
+  read -n 1 -r reply
+  echo ''
+  [[ "$reply" =~ ^[Yy]$ ]]
+}
+
 setup_gitconfig () {
   if ! [ -f git/gitconfig.local.symlink ]
   then

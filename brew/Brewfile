@@ -1,5 +1,4 @@
 tap "datum-cloud/tap", trusted: true
-tap "homebrew/core"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # C/C++ resolver library and DNS resolver utilities
@@ -194,12 +193,10 @@ cask "claude-code"
 cask "codex"
 # Voice and text chat software
 cask "discord", args: { appdir: "/Applications" }
-# App to build and share containerised applications and microservices
-cask "docker-desktop"
+# Fast, light Docker & Linux VM alternative to Docker Desktop
+cask "orbstack"
 # Collaborative team software
 cask "figma"
-# Web browser
-cask "firefox", args: { appdir: "/Applications" }
 cask "font-monaspace"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "gcloud-cli"
@@ -211,7 +208,5 @@ cask "macfuse", args: { appdir: "/Applications" }
 cask "slack", args: { appdir: "/Applications" }
 # Music streaming service
 cask "spotify", args: { appdir: "/Applications" }
-# Open-source code editor
-cask "visual-studio-code"
 # Video communication and virtual meeting platform
 cask "zoom", args: { appdir: "/Applications" }
